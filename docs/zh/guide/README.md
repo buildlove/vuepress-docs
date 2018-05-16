@@ -12,7 +12,7 @@
 
 > 以下所有工具/技术都是本人在实际工作中经常用到的, 排名不分先后, 熟练程度不分先后, 此文档持续更新
 
-## 前端基础以及开发工具
+## 前端
 
 - 前端基础 html 5 / css 3 / javascript/
 - 模板引擎前端 jade / ejs/
@@ -35,7 +35,7 @@
 - 团队协作 foxmail / 钉钉
 - chrome插件相关
 
-## 前端js插件
+## 前端插件
 
 - DOM选取控制插件 jquery
 - 数据结构 underscore / lodash
@@ -47,7 +47,7 @@
 - svg转canvas插件 canvg
 - 文件上传 webuploader
 
-## 服务器node插件
+## NODE服务器
 
 - node框架 express
 - 数据结构 underscore
@@ -68,12 +68,12 @@
 - node打印 debug / log4js / morgan
 - 文件上传后端解析 multiparty
 
-## 服务端python插件
+## python服务端
 
 - 解析DOM BeautifulSoup
 - 解析XML etree
 
-## 经常用到的服务器端基础以及部署工具
+## 服务器及部署工具
 
 - 后端语言 Node / Python / Shell脚本
 - 后端数据库 Mongodb/Mysql

@@ -47,15 +47,15 @@ module.exports = {
           }
         ],
         sidebar: {
-          '/zh/frontend/': genSidebarConfig(),
-          '/zh/serverside/': genSidebarConfig()
+          '/zh/frontend/': genSidebarFontEnd(),
+          '/zh/serverside/': genSidebarServerSide()
         }
       }
     }
   }
 }
 
-function genSidebarConfig (title) {
+function genSidebarFontEnd (title) {
   return [
     {
       title,
@@ -68,6 +68,16 @@ function genSidebarConfig (title) {
         // 'javascript',
         // 'css'
       ]
+    }
+  ]
+}
+
+function genSidebarServerSide(title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: []
     }
   ]
 }
