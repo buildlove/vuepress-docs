@@ -38,7 +38,7 @@ module.exports = {
             link: '/zh/frontend/'
           },
           {
-            text: '服务器端',
+            text: '服务器',
             link: '/zh/serverside/'
           },
           {
@@ -47,7 +47,8 @@ module.exports = {
           }
         ],
         sidebar: {
-          '/zh/frontend/': genSidebarConfig()
+          '/zh/frontend/': genSidebarConfig(),
+          '/zh/serverside/': genSidebarConfig()
         }
       }
     }
@@ -60,7 +61,8 @@ function genSidebarConfig (title) {
       title,
       collapsable: false,
       children: [
-        ''
+        '',
+        'vue'
         // ,
         // 'html',
         // 'javascript',

@@ -19,8 +19,8 @@
 - css转译语言 scss / Less
 - js转译语言 coffeescript
 - js转译语言以及字符验证 typescript
-- 前端框架 Angular 1-5 / [Vue 2](https://github.com/buildlove/SkillTree/blob/master/vue%202.md)
-- [模块化加载js require.js / sea.js /common.js](https://github.com/buildlove/SkillTree/blob/master/%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F.md)
+- 前端框架 Angular 1-5 / [Vue 2](/zh/frontend/vue.html)
+- [模块化标准](/zh/frontend/#前端模块化标准)
 - js标准 ECMAScript 6
 - svg / canvas
 - 图表 echart / D3
