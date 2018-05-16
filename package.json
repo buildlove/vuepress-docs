@@ -12,10 +12,6 @@
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
-  },
   "keywords": [
     "documentation",
     "vue",
@@ -23,10 +19,6 @@
   ],
   "author": "Evan You",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
-  },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
