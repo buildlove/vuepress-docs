@@ -21,7 +21,7 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'vuejs/vuepress',
+    repo: 'buildlove/vuepress-docs',
     editLinks: true,
     docsDir: 'docs',
     locales: {
@@ -32,18 +32,22 @@ module.exports = {
           {
             text: '技能树',
             link: '/zh/guide/',
+          },
+          {
+            text: '前端',
+            link: '/zh/frontend/'
+          },
+          {
+            text: '服务器端',
+            link: '/zh/serverside/'
+          },
+          {
+            text: '其他相关',
+            link: '/zh/about/'
           }
-          // {
-          //   text: '服务器',
-          //   link: '/zh/config/'
-          // },
-          // {
-          //   text: '默认主题',
-          //   link: '/zh/default-theme-config/'
-          // }
         ],
         sidebar: {
-          '/zh/guide/': genSidebarConfig('指南')
+          '/zh/frontend/': genSidebarConfig()
         }
       }
     }
@@ -57,14 +61,10 @@ function genSidebarConfig (title) {
       collapsable: false,
       children: [
         ''
-        // 'getting-started',
-        // 'basic-config',
-        // 'assets',
-        // 'markdown',
-        // 'using-vue',
-        // 'custom-themes',
-        // 'i18n',
-        // 'deploy'
+        // ,
+        // 'html',
+        // 'javascript',
+        // 'css'
       ]
     }
   ]
