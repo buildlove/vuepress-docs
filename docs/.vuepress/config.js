@@ -3,7 +3,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Leon Werth',
+      title: 'Leon_Werth的技能树',
       description: 'This is my doce, believe it or not.'
     }
   },
