@@ -21,12 +21,12 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'buildlove/vuepress-docs',
-    editLinks: true,
+    // repo: 'buildlove/vuepress-docs',
+    // editLinks: true,
     docsDir: 'docs',
     locales: {
       '/': {
-        editLinkText: '在 GitHub 上编辑此页',
+        // editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
         nav: [
           {
