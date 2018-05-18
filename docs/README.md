@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /hero.png
+heroImage: /IMG.png
 actionText: 技能树 →
 actionLink: /zh/guide/
 # features:
