@@ -71,3 +71,90 @@ AMD 加载 js 的好处
 
 }));
 ```
+
+## ECMAScript 6 规范的养成
+
+webstorm 设置 (File >> setting >> Languages & Frameworks >> JavaScript >> ECMAScript 6)。
+
+> **当你设置好es6规范之后, 使用webstorm编程, 右边的语法检错几乎没有红色和黄色的报错的时候, 恭喜你, 你已经养成了使用 es6 标准编程的习惯。**
+
+### 1. 使用 var 作为声明变量的方法报错
+
+  > 注意: 改的时候注意 var 的变量提升。
+
+  es6 里面声明变量都改成 let 和 const, 如果使用 var 作为声明方法, webstorm会报错。 [let和var的区别](http://es6.ruanyifeng.com/#docs/let)。
+
+### 2. 每行代码结束的时候不添加分号报错
+
+  > 注意: 并不是每行代码都加分号, 函数结尾的 '}' 添加分号也会报黄色错误。
+
+### 3. jquery选择器选择两次的情况下报错
+
+  > 注意: 以下的 $ 每出现一次代表一次 DOM 操作, DOM 频繁操作会影响浏览器性能。
+
+```
+
+  $(".select").addClass("active");
+  $(".select").removeClass("active");
+
+修改为
+
+  let select = $(".select"); //这里只选择了一次。
+  select.addClass("active");
+  select.removeClass("active");
+
+```
+
+### 4. 使用"=="的报错
+
+  - "==" 叫相等运算符,  "===" 叫严格等于运算符。
+  - 相等运算符会导致一些变量在值相等而类型不等的情况下出现问题。(具体情况自行百度, 我只能帮你到这里了)。
+
+  需要把两个等号"=="的全部换成三个等号"==="。
+
+### 5. 三元运算符报错
+
+  > 这里可能只是因为es6不许你这么用。
+
+```
+
+  let isover = query.rowCount === -1 ? false : true; // 这种写法会有很大一条横线在整个语句下
+
+  改为
+
+  let isover;
+  query.rowCount === -1 ? isover = false : isover = true;
+	
+```
+  
+
+### 6. 一个表达式里面有多个 return 报错
+
+> 最后一个 return 下面会有很大一条白线
+
+```
+
+  function myfun () {
+    let myNum = 1;
+    if( myNum ){
+    	return 2;
+    }
+    return 1;
+  }
+
+  改为
+
+  function myfun () {
+    let myNum = 1; 
+    let result;	
+    if ( myNum ){
+    	result = myNum; 
+    } else {
+    	result = 3;
+    }
+    return result;
+  }		
+
+```  	
+
+### 后面还有一些, 遇到再说吧
