@@ -1,45 +1,148 @@
+# vue的基础问题
 
-# vue
+## 检错工具
 
-## vue对比其他框架
+  检错功能老是检测语法错误，一个空格都不能错，错了就报红,在config/index.js
 
-> [参考资料](https://cn.vuejs.org/v2/guide/comparison.html#React)
+    Dev：{
+      useEslint: false//这个配置改为false
+    } 
 
-### React和Vue的相似之处
-- 使用Virtual DOM
-- 提供了响应式 (Reactive) 和组件化 (Composable) 的视图组件。
-- 将注意力集中保持在核心库，而将其他功能如路由和全局状态管理交给相关的库。
+## 在webpack.dev.conf.js中注释掉Eslint相关插件  
 
-### React和Vue的不同之处
-- 在 React 中，一切都是 JavaScript，所有的组件的渲染功能都依靠 JSX, Vue支持 JSX , 但是默认推荐基于 HTML 的模板
-- React 中是通过 CSS-in-JS 的方案实现的, Vue 设置样式的默认方法是单文件组件里类似 style 的标签。
-- Vue 的路由库和状态管理库都是由官方维护支持且与核心库同步更新的, React 则是选择把这些问题交给社区维护
-- Vue 提供了 Vue-cli 脚手架，能让你非常容易地构建项目，包含了 Webpack，Browserify，甚至 no build system。React 在这方面也提供了 create-react-app
-但是现在还存在一些局限性：
+  ```
+    const createLintingRule = () => ({
+      test: /\.(js|vue)$/,
+      loader: 'eslint-loader',
+      enforce: 'pre',
+      include: [resolve('src'), resolve('test')],
+      options: {
+        formatter: require('eslint-friendly-formatter'),
+        emitWarning: !config.dev.showEslintErrorsInOverlay
+      }
+    })
+    ...(config.dev.useEslint ? [createLintingRule()] : []),
+  ```  
   
-	1.它不允许在项目生成时进行任何配置，而 Vue 支持 Yeoman-like 定制。
+## vue引用jquery模块
+
+  > 修改webpack.base.conf.js文件
+
+  ```
+    const webpack = require('webpack')引入webpack
+      resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+          'vue$': 'vue/dist/vue.esm.js',
+          '@': resolve('src'),
+          'jquery': 'jquery'
+        }
+      },
+      plugins: [
+        new webpack.ProvidePlugin({
+          $: 'jquery',
+          jQuery: 'jquery'
+        })
+      ],
+
+      import $ from 'jquery'
+  ```
+
+## vue选中/操作dom节点
+
+    在html标签内使用ref="aaa"。
+    在js中使用this.$refs.aaa来找到html节点并操作。
+    
+## 路由加载（更好的加载方式）
+
+  ```
+    require.ensure
+    const weibo = r => require.ensure([], () => r(require('@/components/weibo')), 'weibo')
+    export default new Router({
+        routes: [{
+            path: '/weibo',
+            name: 'weibo',
+            component: weibo
+        }]
+    }
+  ```  
+
+## 引入element-ui
+
+  安装element-ui
+
+    npm install element-ui --save 
+
+  在main文件中引入
+
+    import ElementUI from 'element-ui'
+    import 'element-ui/lib/theme-chalk/index.css'
+    Vue.use(ElementUI)
+
+  注意css文件路径  
+
+
+## 解决跨域
+
+### node配置路由
   
-	2.它只提供一个构建单页面应用的单一模板，而 Vue 提供了各种用途的模板。
+  给所有请求新增请求头
+
+  ```
+    app.all('*', function (req, res, next) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+        res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length,
+        Authorization,\'Origin\',Accept,X-Requested-With');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('X-Powered-By', ' 3.2.1');
+        res.header('Content-Type', 'application/json;charset=utf-8');
+        if (req.method === 'OPTIONS') {
+            res.sendStatus(200);
+        } else {
+            next();
+        }
+    });
+  ```
+
+### vue脚手架集成配置
+
+  ```
+    proxyTable: {
+      '/db': {
+          target: 'http://localhost:3000/',
+          changeOrigin: true,
+          pathRewrite: {
+          '^/db': ''
+          }
+      }
+    }
+  ```
+
+### nginx安装配置
   
-	3.它不能用用户自建的模板构建项目，而自建模板对企业环境下预先建立协议是特别有用的。
+  > nginx配置
+
+
+## js/css局部作用域
+
+### css局部
+
+  css局部引用在style标签中添加scoped。 
   
-- React 学习需要知道 JSX 和 ES2015。
-  Vue不需学 JSX，ES2015 以及构建系统。
+    <style lang="less" scoped>
 
-### Angular与vue的不同之处
+### js局部
 
-- 在 API 与设计两方面上 Vue.js 都比 AngularJS 简单得多
-- AngularJS 使用双向绑定，Vue 在不同组件间强制使用单向数据流。
-- 在 Vue 中指令和组件分得更清晰。指令只封装 DOM 操作，而组件代表一个自给自足的独立单元——有自己的视图和数据逻辑。
-  在 AngularJS 中，每件事都由指令来做，而组件只是一种特殊的指令。
-- AngularJS 使用脏检查循环机制。
-  Vue 使用基于依赖追踪的观察系统并且异步队列更新。
+  vue组件内的html代码段编译之后每一个标签都有添加随机的id
+  在使用jquery的时候通常会这么用
 
-### Angular2与Vue的不同之处
+    $(".l-content-c:first-child")
+      .addClass("selected no-border-left")
 
-- Angular 事实上必须用 TypeScript 来开发，因为它的文档和学习资源几乎全部是面向 TS 的。
-  Vue 和 TS 的整合可能不如 Angular 那么深入
-- 一个包含了 Vuex + Vue Router 的 Vue 项目 (gzip 之后 30kB) 
-  相比使用了这些优化的 angular-cli 生成的默认项目尺寸 (~130kB) 还是要小得多。
-- Vue 相比于 Angular 更加灵活，Vue 官方提供了构建工具来协助你构建项目，但它并不限制你去如何组织你的应用代码。
-- Angular 的 API 面积比起 Vue 要大得多
+  当我在重复使用这个组件时，我只想给我当前使用的这个组件内l-content-c标签的第一个添加类名"selected no-border-left"
+  我当时第一反应是给class添加随机数，最后发现vue会对每个引用组件的html标签都添加随机数。
+  所以我使用了vue的内置函数，先给组件的最顶层div标签添加menuItemParent然后使用jquery
+
+    $(this.$refs.menuItemParent).find(".l-content-c:first-child")
+      .addClass("selected no-border-left")

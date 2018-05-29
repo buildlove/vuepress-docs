@@ -21,8 +21,8 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    // repo: 'buildlove/vuepress-docs',
-    // editLinks: true,
+    repo: 'buildlove/vuepress-docs',
+    editLinks: true,
     docsDir: 'docs',
     locales: {
       '/': {
@@ -62,11 +62,15 @@ function genSidebarFontEnd (title) {
       collapsable: false,
       children: [
         '',
-        'vue'
+        'css',
+        'component',
+        'vue',
+        'compare',
+        'es6'
         // ,
         // 'html',
         // 'javascript',
-        // 'css'
+        
       ]
     }
   ]
