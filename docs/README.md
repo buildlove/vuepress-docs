@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /IMG.png
-actionText: 技能树 →
+actionText: 学习笔记 →
 actionLink: /zh/guide/
 # features:
 # - title: 简洁至上

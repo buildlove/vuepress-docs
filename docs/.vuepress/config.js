@@ -3,7 +3,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Leon_Werth的技能树',
+      title: 'Leon_Werth的学习笔记',
       description: 'This is my doce, believe it or not.'
     }
   },
@@ -21,8 +21,8 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'buildlove/vuepress-docs',
-    editLinks: true,
+    // repo: 'buildlove/vuepress-docs',
+    // editLinks: true,
     docsDir: 'docs',
     locales: {
       '/': {
@@ -30,12 +30,12 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: [
           {
-            text: '技能树',
+            text: '学习笔记',
             link: '/zh/guide/',
           },
           {
             text: '前端',
-            link: '/zh/frontend/'
+            link: '/zh/frontendbasics/'
           },
           {
             text: '服务器',
@@ -47,33 +47,47 @@ module.exports = {
           }
         ],
         sidebar: {
-          '/zh/frontend/': genSidebarFontEnd(),
-          '/zh/serverside/': genSidebarServerSide()
+          '/zh/serverside/': genSidebarServerSide(),
+          '/zh/frontendbasics/': genSidebarFontEnd(),
         }
       }
     }
   }
 }
 
-function genSidebarFontEnd (title) {
-  return [
+function genSidebarFontEnd() {
+  let result = [
     {
-      title,
+      title: '前端基础',
       collapsable: false,
       children: [
-        '',
         'css',
-        'component',
+        'es6',
+        'modulecommon'
+      ]
+    },{
+      title: '前端插件',
+      collapsable: false,
+      children: [
+      ]
+    }, {
+      title: '前端框架',
+      collapsable: false,
+      children: [
         'vue',
-        'compare',
-        'es6'
-        // ,
-        // 'html',
-        // 'javascript',
-        
+        'component',
+        'compare'
+      ]
+    }, {
+      title: '前端工具',
+      collapsable: false,
+      children: [
+        'webpack',
       ]
     }
   ]
+
+  return result
 }
 
 function genSidebarServerSide(title) {

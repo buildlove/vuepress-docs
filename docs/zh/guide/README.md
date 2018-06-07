@@ -1,16 +1,17 @@
 # Leon Werth的技能树
 
-> 以下所有工具/技术都是本人在实际工作中经常用到的, 排名不分先后, 熟练程度不分先后, 此文档持续更新
-
 ## 前端基础
 
-- 前端基础 html 5 / css 3 / javascript/
+- html5 
+- css3 
+- javascript
 - 模板引擎前端 jade / ejs/
-- css转译语言 scss / Less
+- css转译语言 scss / less
 - js转译语言 coffeescript
 - js转译语言以及字符验证 typescript
 - svg / canvas
-- [ECMAScript 6](/zh/frontend/#webstorm-ecmascript-6-语法检查)
+- ECMAScript6标准
+- http / https / net
 
 ## 前端插件
 
@@ -27,21 +28,18 @@
 - 地图 leaflet
 - 图表 echart / D3
 
-
 ## 前端框架
 
 - Angular 和 Angular2以上
-- [Vue 2](/zh/frontend/vue.html)
+- Vue 2
 
-## 常用工具
+## 前端的各种端
 
-- 切图 photoshop / mark man / getcolor
-- 网页调试 postman
-- 编辑器 webstorm / vscode / sublime
-- 代码对比工具 Beyond Compare 4
-- 版本控制工具 [git](https://buildlove.github.io/2015/12/08/Git/) / svn
+- 手机端
+- 微信公众号
+- 微信小程序
 
-## Node
+## node中间件和插件
 
 - node框架 express
 - 数据结构 underscore
@@ -64,8 +62,13 @@
 
 ## python
 
+- 语言基础
 - 解析DOM BeautifulSoup
 - 解析XML etree
+
+## go
+
+- 语言基础
 
 ## 服务器及部署工具
 
@@ -78,6 +81,14 @@
 - linux相关 Linux基础命令/Vi编辑器
 - 反向代理 Nginx
 - 使用服务器厂商 搬瓦工/阿里云
+
+## 常用工具
+
+- 切图 photoshop / mark man / getcolor
+- 网页调试 postman
+- 编辑器 webstorm / vscode / sublime
+- 代码对比工具 Beyond Compare 4
+- 版本控制工具 git / svn
 
 ## 个人相关网站
 
