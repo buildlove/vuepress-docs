@@ -1,5 +1,33 @@
 # vue的基础问题
-  
+
+## 灵活 - 渐进式
+
+### 声明式渲染
+
+### 组件系统
+
+### 客户端路由
+
+### 大规模状态管理
+
+### 构建工具
+
+## 高效
+
+### 16kb min+gzip 的运行大小
+
+### 超快的虚拟DOM
+
+### 最省心的优化
+
+## vue基础指令介绍
+
+- 指令的使用: v-model v-text v-show v-if v-bind v-for -v-on
+
+- 过滤器: filter
+
+- 组件: Component
+
 ## vue引用jquery模块
 
   > 修改webpack.base.conf.js文件
@@ -142,3 +170,12 @@
 
     $(this.$refs.menuItemParent).find(".l-content-c:first-child")
       .addClass("selected no-border-left")
+
+### http
+
+vue 已经集成和 http 插件
+
+  // 查询参数是 {"id": 123} 的数据
+  this.$http.get('data/some.json', {"id": 123}).then(function(res){
+    // you code ...
+  })      

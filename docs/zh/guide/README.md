@@ -33,6 +33,10 @@
 - Angular 和 Angular2以上
 - Vue 2
 
+## 前端优化
+
+- SEO
+
 ## 前端的各种端
 
 - 手机端
@@ -41,7 +45,8 @@
 
 ## node中间件和插件
 
-- node框架 express
+- express 以及常用中间件
+- 内置模块 fs / path
 - 数据结构 underscore
 - 后端html文本解析 cheerio
 - 服务器往客户端发消息 socket.io
@@ -58,6 +63,7 @@
 - 模板引擎相关 jade / ejs
 - redis相关 redis / connect-redis
 - node打印 debug / log4js / morgan
+- 图片处理工具 node-images/
 - 文件上传后端解析 multiparty
 
 ## python
@@ -69,6 +75,7 @@
 ## go
 
 - 语言基础
+- beego
 
 ## 服务器及部署工具
 
@@ -85,10 +92,12 @@
 ## 常用工具
 
 - 切图 photoshop / mark man / getcolor
+- 雪碧图制作工具 CssGaga
 - 网页调试 postman
 - 编辑器 webstorm / vscode / sublime
 - 代码对比工具 Beyond Compare 4
 - 版本控制工具 git / svn
+- 密码管理器 enpass
 
 ## 个人相关网站
 
