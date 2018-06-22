@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /IMG.png
+heroImage: /IMG.jpg
 actionText: 学习笔记 →
 actionLink: /zh/guide/
 # features:

@@ -30,7 +30,7 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: [
           {
-            text: '学习笔记',
+            text: '技能树',
             link: '/zh/guide/',
           },
           {

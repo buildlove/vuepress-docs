@@ -1,4 +1,4 @@
-# Leon Werth的技能树
+# 技能树
 
 ## 前端基础
 
@@ -45,9 +45,9 @@
 
 ## node中间件和插件
 
-- express 以及常用中间件
-- 内置模块 fs / path
-- 数据结构 underscore
+- 框架 express
+- node 内置模块
+- 数据结构转化 lodash
 - 后端html文本解析 cheerio
 - 服务器往客户端发消息 socket.io
 - 后端进程持续化 pm2 / forever
@@ -57,7 +57,7 @@
 - http请求插件 axios
 - 打包工具 gulp / grunt / webpack
 - 用户登陆相关 cookie-parser / express-session
-- node缓存数据相关 continuation-local-storage
+- node 缓存数据相关 continuation-local-storage
 - 管理缓存 memory-cache
 - 请求数据并做相应的拦截 speragent
 - 模板引擎相关 jade / ejs
