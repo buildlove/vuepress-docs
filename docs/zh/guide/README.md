@@ -71,6 +71,11 @@
 - 语言基础
 - 解析DOM BeautifulSoup
 - 解析XML etree
+- 时间格式转换 time  
+- 设置定时任务 schedule 
+- 插件管理 PluginBase 
+- 请求数据 requests 
+- 模拟不同的客户端 from user_agent import generate_user_agent, generate_navigator 
 
 ## go
 

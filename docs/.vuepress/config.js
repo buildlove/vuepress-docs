@@ -34,20 +34,20 @@ module.exports = {
             link: '/zh/guide/',
           },
           {
-            text: '前端',
+            text: '程序人生',
             link: '/zh/frontendbasics/'
           },
-          {
-            text: '服务器',
-            link: '/zh/serverside/'
-          },
+          // {
+          //   text: '服务器',
+          //   link: '/zh/serverside/'
+          // },
           {
             text: '其他相关',
             link: '/zh/about/'
           }
         ],
         sidebar: {
-          '/zh/serverside/': genSidebarServerSide(),
+          // '/zh/serverside/': genSidebarServerSide(),
           '/zh/frontendbasics/': genSidebarFontEnd(),
         }
       }
