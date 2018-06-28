@@ -1,24 +1,282 @@
-# vue的基础问题
+## vue的基础问题
 
-## 灵活 - 渐进式
+## 挂载点模板和实例
 
-### 声明式渲染
+```
+    <div id="root"></div>
 
-### 组件系统
+    <script>
+        new Vue({
+            el: "#root",
+            template: "<div>{{msg}}</div>",
+            data: {
+                msg: "hello world",
+                content: ""
+            },
+            methods: {
+                handleClick: function(){
+                    this.content = "word"
+                }
+            }
+        })
+    </script>
+```
 
-### 客户端路由
+## 插值表达式
 
-### 大规模状态管理
+<h1>{{number}}</h1>
+<h1 v-text="number"></h1>
+<h1 v-html="number"></h1> v-html 会转译html
+<div v-on:click="handleClick">{{content}}</div>
+<div @click="handleClick">{{content}}</div>
+v-on === @
+v-bind === :
 
-### 构建工具
+## 属性绑定和双向绑定
 
-## 高效
+<div :title="title">hello world</div> v-bind或者: 属性绑定
+<input type="text" v-model="content"> v-model: 双向绑定 
+<div>{{content}}</div>
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            title: "this is hello world",
+            content: "this is content"
+        }
+    })
+</script>
 
-### 16kb min+gzip 的运行大小
+## 计算属性和监听器
 
-### 超快的虚拟DOM
+<div id="root">
+    姓:<input v-model="firstName">
+    名:<input v-model="lastName">
+    /*fullName计算一次之后会缓存起来, 如果firstName和lastName的值不变fullName不会重新计算。*/
+    <div>{{fullName}}</div>
+    /*watch监听fullName的改变并计数*/
+    <div>{{count}}</div>
+</div>
 
-### 最省心的优化
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            firstName: '',
+            lastName: '',
+            count: 0
+        },
+        computed: {
+            fullName: function(){
+                return this.firstName + " " + this.lastName
+            }
+        },
+        watch: {
+            fullName: function(){
+                this.count ++
+            }
+        }
+    })
+</script>
+
+## v-if, v-show, v-for 指令
+
+使用 v-if 时销毁节点和创建节点
+使用 v-show 只是在节点上添加 display:none/display:block 属性
+vue 2.x 版本之后 :key只支持 number 和 string类型之类的 primitive 类型
+<div id="root">
+    <div v-if="show">hello world</div>
+    <button @click="handleClick">toggle</button>
+    <ul>
+        <li v-for="(item, index) of list" :key="item">{{index}}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            show: true,
+            list: [1,2,3]
+        },
+        methods:{
+            handleClick: function(){
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+
+## todolist
+
+// 数据双向绑定给inputValue, 点击提交按钮时push到list数组里
+<div id="root">
+    <div>
+        <input type="text" v-model="inputValue">
+        <button @click="handleSubmit">提交</button>
+    </div>
+    <ul>
+        <li v-for="(item, index) of list" :key="item">{{item}}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            inputValue: '',
+            list: []
+        },
+        methods: {
+            handleSubmit: function(){
+                this.list.push(this.inputValue)
+                this.inputValue = ''
+            }
+        }
+    })
+</script>
+
+## todolist 组件拆分
+
+### 了解全局组件和局部组件
+
+// 全局组件
+// Vue.component('todo-item', {
+//     template: '<li>item</li>'
+// })
+
+// 局部组件    
+var TodoItem = {
+    template: '<li>item</li>'
+}
+new Vue({
+    el: "#root",
+    data: {
+        inputValue: '',
+        list: []
+    },
+    components: {//全局组件不用定义components
+        'todo-item': TodoItem
+    },
+    methods: {
+        handleSubmit: function(){
+            this.list.push(this.inputValue)
+            this.inputValue = ''
+        }
+    }
+})
+
+### 往组件内传值
+
+// 全局组件使用 props 属性接收 content 传值, content 在标签内绑定 v-for 遍历的值 item。
+
+<div id="root">
+    <div>
+        <input type="text" v-model="inputValue">
+        <button @click="handleSubmit">提交</button>
+    </div>
+    <ul>
+        <todo-item 
+            v-for="(item, index) of list" 
+            :key="index" 
+            :content="item">
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+    // 全局组件
+    Vue.component('todo-item', {
+        props: ['content'],
+        template: '<li>{{content}}</li>'
+    })
+
+    new Vue({
+        el: "#root",
+        data: {
+            inputValue: '',
+            list: []
+        },
+        methods: {
+            handleSubmit: function(){
+                this.list.push(this.inputValue)
+                this.inputValue = ''
+            }
+        }
+    })
+</script>
+
+## 组件与实例之间的关系
+
+* 每一个组件都是一个vue实例
+* 如果没有template模板,程序会去找该实例的挂载点
+
+Vue.component('todo-item', {
+    props: ['content'],
+    template: '<li @click="handleClick">{{content}}</li>',
+    methods: {
+        handleClick: function(){
+            alert('clicked')
+        }
+    }
+})
+
+## todolist 删除功能
+
+* 点击 li,通过 this.emit 从子组件传递下标值
+* 在节点通过属性值 @delete="handDelete" 指定接收下标的函数为 handDelete
+* 在父组件 methods 中定义 handDelete 接收下标作为参数, 删除 list 中的值
+
+<div id="root">
+    <div>
+        <input type="text" v-model="inputValue">
+        <button @click="handleSubmit">提交</button>
+    </div>
+    <ul>
+        <todo-item 
+            v-for="(item, index) of list" 
+            :key="index" 
+            :content="item"
+            :index="index"
+            @delete="handleDelete"
+            >
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+
+    // 全局组件
+    Vue.component('todo-item', {
+        props: ['content', 'index'],
+        template: '<li @click="handleClick">{{content}}</li>',
+        methods: {
+            handleClick: function(){
+                this.$emit('delete', this.index)
+            }
+        }
+    })
+
+    new Vue({
+        el: "#root",
+        data: {
+            inputValue: '',
+            list: []
+        },
+        methods: {
+            handleSubmit: function(){
+                this.list.push(this.inputValue)
+                this.inputValue = ''
+            },
+            handleDelete: function (index) {
+                this.list.splice(index, 1)
+            }
+        }
+    })
+</script>
+
+## Vue-cli 的简介与使用
+
 
 ## vue基础指令介绍
 

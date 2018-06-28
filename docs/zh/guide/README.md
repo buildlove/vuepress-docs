@@ -5,39 +5,34 @@
 - html5 
 - css3 
 - javascript
-- 模板引擎前端 jade / ejs/
-- css转译语言 scss / less
-- js转译语言 coffeescript
-- js转译语言以及字符验证 typescript
+- jade / ejs/
+- scss / less
+- coffeescript / typescript
 - svg / canvas
 - ECMAScript6标准
-- http / https / net
+- http / https
 
 ## 前端插件
 
-- DOM选取控制插件 jquery
-- 数据结构 underscore / lodash
-- 前端样式框架 /jqwidgets / bootstrap / layer-ui / element-ui/
-- http请求 jquery.ajax
-- 时间格式化工具 moment
-- 伪造数据 mock.js
-- 页面导出png插件 html2canvas
+- jquery
+- underscore / lodash
+- jqwidgets / bootstrap / layer-ui / element-ui/
+- moment
+- mock.js
+- webuploader
+- ztree
+- leaflet
+- echart / D3
+- html2canvas
 - svg转canvas插件 canvg
-- 文件上传 webuploader
-- 树形化工具 ztree
-- 地图 leaflet
-- 图表 echart / D3
 
 ## 前端框架
 
-- Angular 和 Angular2以上
-- Vue 2
+- Angular
+- Vue
+- react
 
-## 前端优化
-
-- SEO
-
-## 前端的各种端
+## 客户端
 
 - 手机端
 - 微信公众号
@@ -65,6 +60,7 @@
 - node打印 debug / log4js / morgan
 - 图片处理工具 node-images/
 - 文件上传后端解析 multiparty
+- 定时处理任务插件 node-schedule
 
 ## python
 
