@@ -1,8 +1,11 @@
 # css3
 
 ## 盒子模型
-
-### 内容 content(width/height)
+  content- width/height
+  padding
+  margin
+  border
+  box-shadow
 
 ### 内边距 padding
 
@@ -29,11 +32,6 @@
     padding-left: 2px; 
 ```
 
-### 边框 border
-
-### 外边距 margin 
-
-### 轮廓 outline（不常用） 
 
 ## 雪碧图
 
@@ -42,8 +40,6 @@
 1.静态图片, 不随用户信息的变化而变化
 2.小图片, 图片容量比较小
 3.加载量比较大
-
-## 分组和嵌套
 
 ## 尺寸
 
@@ -82,7 +78,7 @@ float: left;
 float: right;
 both: clear
 
-## 自适应以及响应式布局
+### 自适应以及响应式布局
 
 自适应: 为了在不同分辨率下以及不同设备上让同一网页适应
 响应式:
@@ -111,3 +107,61 @@ table-layout:fixed //表格固定不会被里面的内容撑大
 text-overflow:ellipsis //文本溢出部分显示省略号
 
 white-space: nowrap //文本不会换行，文本会在在同一行上继续，直到遇到标签为止
+
+### flex布局
+
+### 瀑布流布局
+
+### 3d 动画
+
+```
+过度属性
+transform: -webkit-transtion color 3s; 过度效果
+	 -webkit-transition property: color;
+	 -webkit-transition-duration: 1s;
+多个属性过度
+-webkit-transition: <属性1><时间1>,<属性2><时间2>，...
+或者 
+-webkit-transition: <属性1><时间1>；
+-webkit-transition: <属性1><时间1>；
+
+过度模式
+transition-timing-function 
+* ease               缓慢开始，缓慢结束
+* linear             匀速
+* ease-in          缓慢开始
+* ease-out        缓慢结束
+* ease-in-out    缓慢开始，缓慢结束
+
+设置3D场景
+-webkit-perspective: 800;
+-webkit-perspective-origin: 50% 50%;
+-webkit-transform-style: -webkit-preserve-3d;
+transform
+- translate 位移
+	* translateX
+	* translateY
+	* translateZ
+
+- rotate 旋转
+	* rotateX
+	* rotateY
+	* rotateZ
+
+调整旋转中心
+transform-origin
+
+x轴
+left
+center
+right
+
+y轴
+top
+center
+bottom
+
+z轴
+length
+
+```
