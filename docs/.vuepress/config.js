@@ -74,7 +74,6 @@ function genSidebarFontEnd() {
       title: '前端框架',
       collapsable: false,
       children: [
-        'vue',
         'component',
         'compare'
       ]

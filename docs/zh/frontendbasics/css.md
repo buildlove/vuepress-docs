@@ -80,6 +80,21 @@ both: clear
 
 ### 自适应以及响应式布局
 
+1. media query
+```
+<link type="text/css" rel="stylesheet" href="link.css" media="only screen and (max-width:480px)">
+<style>
+@media screen and (min-width: 480px){
+  body{background: blue}
+}
+@media 媒体类型 and (媒体特性) and (媒体特性)...{
+    /*css样式*/
+}
+</style>
+```
+
+2. bootstrap 等框架
+
 自适应: 为了在不同分辨率下以及不同设备上让同一网页适应
 响应式:
 
@@ -91,13 +106,6 @@ both: clear
 
 4.使用float浮动布局。
 
-5.使用以下代码来加载不同分辨率下的css代码。
-
-```
-    @media 媒体类型 and (媒体特性) and (媒体特性)...{
-        /*css样式*/
-    }
-```
 媒体类型: screen, print...      媒体特性: max-width, max-height
 
 list-style:none //去掉li前面的点  
@@ -111,6 +119,7 @@ white-space: nowrap //文本不会换行，文本会在在同一行上继续，�
 ### flex布局
 
 ### 瀑布流布局
+动态计算 div 的 top 和 left；
 
 ### 3d 动画
 
